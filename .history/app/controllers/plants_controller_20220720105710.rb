@@ -20,7 +20,7 @@ class PlantsController < ApplicationController
   end
 
   def destroy
-    plant = Plant.find_by(id: params[:id])
+    plant = find_plant
     plant.destroy
     head :no_content
   end

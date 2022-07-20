@@ -20,9 +20,8 @@ class PlantsController < ApplicationController
   end
 
   def destroy
-    plant = Plant.find_by(id: params[:id])
-    plant.destroy
-    head :no_content
+    plant = find_plant
+    hea:no_content
   end
 
   def update
@@ -36,7 +35,9 @@ class PlantsController < ApplicationController
   def plant_params
     params.permit(:name, :image, :price, :is_in_stock)
   end
-
+  def find_plant
+    Plant.find(id:params[:id])
+  end
   def render_not_found_response
     render json: { error: "Plant not found" }, status: :not_found
   end
